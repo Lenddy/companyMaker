@@ -1,0 +1,77 @@
+@model Job
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        text-align: center;
+    }
+</style>
+<body>
+        <form asp-controller="User" asp-action="logout" method="post"> <button> log out</button></form>
+        <form asp-controller="Job" asp-action="jobs" method="get"> <button> home</button></form>
+    <form asp-controller="Job" asp-action="createJob" method="post">
+                <div>
+                <label asp-for="title"></label>
+                <input type="text" asp-for="title" id="">
+                <span asp-validation-for="title"></span>
+                </div>
+
+                <div class="description">
+                <label asp-for="description"></label>
+                <textarea asp-for="description" cols="50" rows="5" placeholder="we recomment to give a description of your company some the people know what the company does "></textarea>
+                <span asp-validation-for="description" ></span>
+                </div>
+
+                <div>
+                <label asp-for="payment"></label>
+                <input  asp-for="payment" type="number" id="">
+                <span asp-validation-for="payment" ></span>
+                </div>
+
+                <div>
+                <label asp-for="hours"></label>
+                <input  asp-for="hours" id="">
+                <span asp-validation-for="hours" ></span>
+                </div>
+
+                <div>
+                <label asp-for="image"></label>
+                <input  asp-for="image" id="">
+                <span asp-validation-for="image" ></span>
+                </div>
+
+                
+                <div>
+                <label asp-for="city"></label>
+                <input  asp-for="city" id="">
+                <span asp-validation-for="city" ></span>
+                </div>
+
+                <div>
+                <label asp-for="country"></label>
+                <input  asp-for="country" id="">
+                <span asp-validation-for="country" ></span>
+                </div>
+
+                <div>
+                <label asp-for="address"></label>
+                <input  asp-for="address" id="">
+                <span asp-validation-for="address" ></span>
+                </div>
+
+                <div>
+                <label asp-for="postalCode"></label>
+                <input  asp-for="postalCode" type="number" id="">
+                <span asp-validation-for="postalCode" ></span>
+                </div>
+
+                <button>create</button>
+    </form>
+</body>
+</html>

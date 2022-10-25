@@ -1,0 +1,42 @@
+@model Job
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <h1>@Model.title </h1>
+        <form asp-controller="User" asp-action="logout" method="post"> <button> log out</button></form>
+        <form asp-controller="Company" asp-action="home" method="get"> <button> home</button></form>
+        <form asp-controller="Company" asp-action="newCompany" method="get"> <button>make company</button></form>
+        @if(Model.UserId == Context.Session.GetInt32("uid")){@*<a asp-controller = "company" asp-action = "edit" asp-route-id = "@Model.CompanyId"><button>update</button></a> <form asp-controller= "Company" asp-action= "delete" asp-route-id="@Model.CompanyId" method="post"> <button>delete</button> </form> *@}  
+                    @if(Model.jobCreator != null){
+    <h1>created by  @Model.jobCreator.fullName()    @Model.CreatedAt</h1>
+            }
+        <div>
+            <h1>job and  contact info</h1>
+            <h4>houres: @Model.hours id: @Model.JobId</h4>
+            <h4>Description: @Model.description </h4>
+            @if(Model.jobCreator != null ){
+            <h4>Company phone number: @Model.jobCreator.phoneNumber (this shoud appear as blank until you fix the user update)</h4>
+            <h4>email: @Model.jobCreator.Email</h4>
+            <h4>image goes here @Model.image</h4>
+            }
+        </div>
+        <div>
+        <h1>location</h1>
+            <h4>contry :@Model.country</h4>
+            <h4>city: @Model.city</h4>
+            <h4>address : @Model.address</h4>
+            <h4>Postla codel : @Model.postalCode </h4>
+        </div>
+        <div>
+
+        </div>
+        </div>
+</body>
+</html>
