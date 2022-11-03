@@ -42,6 +42,9 @@ public JobController(DB context){
         return View("newJob");
     }
 
+
+// !figure out a way to allow the user to add a company  to a job or a job to a company
+// !if you cant just leave it how it is and add a make a job option to the company side 
     [HttpPost("/job/create")]
     public IActionResult createJob(Job createJob){
         if(!loggedIn || uid == null){
@@ -51,13 +54,14 @@ public JobController(DB context){
             return newJob();
         }
         createJob.UserId = (int)uid;// this is going to ge the id of the user that creates the job
+        // Job? allCompanies = db.jobs.Include(u=> u.jobCreator.createdCompanies).FirstOrDefault(j=>j.jobCreator.UserId == createJob.UserId);
         db.jobs.Add(createJob);
         db.SaveChanges();
+
         return RedirectToAction("Jobs","Job");
     }
 
     [HttpGet("/job/{id}")]
-
     public IActionResult viewOne(int id){
         if(!loggedIn || uid == null){
             return RedirectToAction("index","User");

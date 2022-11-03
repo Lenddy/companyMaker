@@ -35,10 +35,46 @@
                 </div>
 
                 <div>
+                <label asp-for="payTime"></label>
+                <select asp-for="payTime" >
+                    <option value="">select pay Time</option>
+                    <option value="per Min">per Min</option>
+                    <option value="per Hr">per Hr</option>
+                    <option value="per Day">per Day</option>
+                </select>
+                <span asp-validation-for="payTime" ></span>
+                </div>
+
+                <div>
                 <label asp-for="hours"></label>
-                <input  asp-for="hours" id="">
+                <input  asp-for="hours" type="number" id="">
                 <span asp-validation-for="hours" ></span>
                 </div>
+
+                <div>
+                <label asp-for="time"></label>
+                <select asp-for="time" >
+                    <option value="">select time</option>
+                    <option value="Min">Min</option>
+                    <option value="Hrs">Hrs</option>
+                    <option value="Days">Days</option>
+                </select>
+                <span asp-validation-for="time" ></span>
+                </div>
+
+            @* @if (Model.jobCreator.createdCompanies != null){
+                <div>
+                <label asp-for="company"></label>
+                <select asp-for="company" >
+                    <option value="">select company</option>
+                    @foreach (var item in Model.jobCreator.createdCompanies)
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+                <span asp-validation-for="company" ></span>
+                </div>
+            } *@
 
                 <div>
                 <label asp-for="image"></label>
@@ -46,7 +82,7 @@
                 <span asp-validation-for="image" ></span>
                 </div>
 
-                
+
                 <div>
                 <label asp-for="city"></label>
                 <input  asp-for="city" id="">

@@ -54,7 +54,7 @@ public class User{
     
 // for one to many
 // * this is for when you make the job side of the website
-    // public List<Company> createdCompanies {get; set;} = new List<Company>();
+    public List<Company> createdCompanies {get; set;} = new List<Company>();
 
     // public List<Association> attendingWedding {set; get;} = new List<Association>();
 

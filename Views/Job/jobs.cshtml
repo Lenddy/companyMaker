@@ -36,17 +36,17 @@
             <tr>
                 <th>Id</th>
                 <th>Job title</th>
-                <th>hours</th>
+                <th>time</th>
                 <th>payment</th>
                 <th>action</th>
             </tr>
             <tr>
                 <td>@j.JobId</td>
                 <td>@j.title</td>
-                <td>@j.hours</td>
-                <td>@j.payment</td>
-                <td>@* <a asp-controller = "Company" asp-action = "viewOne" asp-route-id="@c.CompanyId" method = "get"><button>More info</button> </a> 
-                @if(c.UserId == Context.Session.GetInt32("uid")){
+                <td>@j.hours @j.time</td>
+                <td>@j.payment @j.payTime</td>
+                <td><a asp-controller = "Job" asp-action = "viewOne" asp-route-id="@j.JobId" method = "get"><button>More info</button> </a> 
+                @* @if(c.UserId == Context.Session.GetInt32("uid")){
                 <a asp-controller = "company" asp-action = "edit" asp-route-id = "@c.CompanyId" method ="get"><button>| update</button></a> 
                 <form asp-controller= "Company" asp-action= "delete" asp-route-id="@c.CompanyId" method="post"> <button>delete</button></form>}
                 <a asp-controller= "User" asp-action="profile" asp-route-id= "@c.UserId" > <button>| user profile</button></a> *@

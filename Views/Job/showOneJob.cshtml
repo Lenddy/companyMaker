@@ -15,11 +15,11 @@
         <form asp-controller="Company" asp-action="newCompany" method="get"> <button>make company</button></form>
         @if(Model.UserId == Context.Session.GetInt32("uid")){@*<a asp-controller = "company" asp-action = "edit" asp-route-id = "@Model.CompanyId"><button>update</button></a> <form asp-controller= "Company" asp-action= "delete" asp-route-id="@Model.CompanyId" method="post"> <button>delete</button> </form> *@}  
                     @if(Model.jobCreator != null){
-    <h1>created by  @Model.jobCreator.fullName()    @Model.CreatedAt</h1>
+    <h1>created by  @Model.jobCreator.fullName() @Model.CreatedAt</h1>
             }
         <div>
-            <h1>job and  contact info</h1>
-            <h4>houres: @Model.hours id: @Model.JobId</h4>
+            <h1>job and contact info</h1>
+            <h4> id: @Model.JobId  Payment: @Model.payment @Model.payTime Time: @Model.hours @Model.time</h4>
             <h4>Description: @Model.description </h4>
             @if(Model.jobCreator != null ){
             <h4>Company phone number: @Model.jobCreator.phoneNumber (this shoud appear as blank until you fix the user update)</h4>

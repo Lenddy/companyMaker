@@ -30,14 +30,24 @@ public class Job
     public double payment {get; set;}
 
     [Required]
+    [Display(Name ="Pay Time")]
+    public string payTime {get; set;}
+
+    [Required]
     [Display(Name ="how long")]
     // make a drop down menu
     public string hours {get; set;}
+
+    [Required]
+    [Display(Name = "Time")]
+    public string time {get; set;}
 
     [Display(Name ="image url")]
     [MinLength(2)]
     public string? image { get; set; }
 
+    [Display(Name ="company(optional)")]
+    public string? company {get; set;}
 
     [Required]
     [MinLength(1,ErrorMessage = "you must add a country/region name ")]

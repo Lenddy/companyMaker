@@ -11,7 +11,7 @@ using companyMaker.Models;
 namespace companyMaker.Migrations
 {
     [DbContext(typeof(DB))]
-    [Migration("20221024224141_FirstMigration")]
+    [Migration("20221025144959_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -110,6 +110,9 @@ namespace companyMaker.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("company")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("country")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -125,11 +128,19 @@ namespace companyMaker.Migrations
                     b.Property<string>("image")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("payTime")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<double>("payment")
                         .HasColumnType("double");
 
                     b.Property<int>("postalCode")
                         .HasColumnType("int");
+
+                    b.Property<string>("time")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("title")
                         .IsRequired()
@@ -184,7 +195,7 @@ namespace companyMaker.Migrations
             modelBuilder.Entity("companyMaker.Models.Company", b =>
                 {
                     b.HasOne("companyMaker.Models.User", "companyCreator")
-                        .WithMany()
+                        .WithMany("createdCompanies")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -201,6 +212,11 @@ namespace companyMaker.Migrations
                         .IsRequired();
 
                     b.Navigation("jobCreator");
+                });
+
+            modelBuilder.Entity("companyMaker.Models.User", b =>
+                {
+                    b.Navigation("createdCompanies");
                 });
 #pragma warning restore 612, 618
         }
