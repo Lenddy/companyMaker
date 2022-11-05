@@ -114,8 +114,31 @@ public IActionResult logIn(Login logInUser){
         if(oneUser == null){
             return RedirectToAction("home","Company");
         }
-        return View("userInfo", oneUser);
-    }
+        return View("allUserInfo", oneUser);
+    } //change it to view userInfo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //! you might need to use the viewBag
     [HttpPost("/user/{id}/update")]
@@ -147,4 +170,31 @@ public IActionResult logIn(Login logInUser){
     HttpContext.Session.Clear();
     return RedirectToAction("index");
 }
+
+//! Make this and update user info into a partial so you can have them both in the same page
+    [HttpGet("/change/password")]
+    public IActionResult changePassword(){
+        if(!loggedIn || uid == null){
+            return RedirectToAction("index","User");
+        }
+
+        return View("allUserInfo","User");
+    }
+
+    [HttpPost("/update/password")]
+    public IActionResult UpdatePassword(changePassword change){
+        if(!loggedIn || uid == null){
+            return RedirectToAction("index","User");
+        }
+        if(ModelState.IsValid){}
+
+// you will change this to go the destination that you want
+        return View("home","Shared");
+    }
+
+    [HttpGet("/all/user/info")]
+    public IActionResult allUserInfo(){
+        return View("allUserInfo","User");
+    }
+
 }
